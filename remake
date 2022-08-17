@@ -4609,29 +4609,18 @@ function GetInTable(Table, Name)
 end
 
 function respawn(plr)
-	if invisRunning then TurnVisible() end
-	local char = plr.Character
-	if char:FindFirstChildOfClass("Humanoid") then char:FindFirstChildOfClass("Humanoid"):ChangeState(15) end
-	char:ClearAllChildren()
-	local newChar = Instance.new("Model")
-	newChar.Parent = workspace
-	plr.Character = newChar
-	wait()
-	plr.Character = char
-	newChar:Destroy()
+	local args = {
+        [1] = ";refresh "
+    }
+    game:GetService("ReplicatedStorage").HDAdminClient.Signals.RequestCommand:InvokeServer(unpack(args))
 end
 
 local refreshCmd = false
 function refresh(plr)
-	refreshCmd = true
-	local Human = plr.Character and plr.Character:FindFirstChildOfClass("Humanoid", true)
-	local pos = Human and Human.RootPart and Human.RootPart.CFrame
-	local pos1 = workspace.CurrentCamera.CFrame
-	respawn(plr)
-	task.spawn(function()
-		plr.CharacterAdded:Wait():WaitForChild("Humanoid").RootPart.CFrame, workspace.CurrentCamera.CFrame = pos, wait() and pos1
-		refreshCmd = false
-	end)
+	local args = {
+        [1] = ";refresh "
+    }
+    game:GetService("ReplicatedStorage").HDAdminClient.Signals.RequestCommand:InvokeServer(unpack(args))
 end
 
 local lastDeath
@@ -9849,7 +9838,7 @@ function attach(speaker,target)
 		newHum.Parent = char
 		newHum.Name = "Humanoid"
 		wait()
-		hum:Destroy()
+		hum:Clone()
 		workspace.CurrentCamera.CameraSubject = char
 		newHum.DisplayDistanceType = "None"
 		local tool = speaker:FindFirstChildOfClass("Backpack"):FindFirstChildOfClass("Tool") or speaker.Character:FindFirstChildOfClass("Tool")
@@ -9873,16 +9862,10 @@ addcmd('attach',{},function(args, speaker)
 	end
 end)
 
-function kill(speaker,target,fast)
+function kill(speaker,target)
 	if tools(speaker) then
 		if target ~= nil then
 			local NormPos = getRoot(speaker.Character).CFrame
-			if not fast then
-				refresh(speaker)
-				wait()
-				repeat wait() until speaker.Character ~= nil and getRoot(speaker.Character)
-				wait(0.3)
-			end
 			local hrp = getRoot(speaker.Character)
 			attach(speaker,target)
 			repeat
@@ -9962,7 +9945,10 @@ function bring(speaker,target,fast)
 		if target ~= nil then
 			local NormPos = getRoot(speaker.Character).CFrame
 			if not fast then
-				refresh(speaker)
+				local args = {
+                    [1] = ";refresh "
+                }
+                game:GetService("ReplicatedStorage").HDAdminClient.Signals.RequestCommand:InvokeServer(unpack(args))
 				wait()
 				repeat wait() until speaker.Character ~= nil and getRoot(speaker.Character)
 				wait(0.3)
@@ -10000,7 +9986,10 @@ function teleport(speaker,target,target2,fast)
 		if target ~= nil then
 			local NormPos = getRoot(speaker.Character).CFrame
 			if not fast then
-				refresh(speaker)
+				local args = {
+                    [1] = ";refresh "
+                }
+                game:GetService("ReplicatedStorage").HDAdminClient.Signals.RequestCommand:InvokeServer(unpack(args))
 				wait()
 				repeat wait() until speaker.Character ~= nil and getRoot(speaker.Character)
 				wait(0.3)
