@@ -9015,6 +9015,8 @@ addcmd('bang',{'rape'},function(args, speaker)
     execCmd('float')
     wait()
     execCmd('spin 999')
+    wait()
+    execCmd('view args[1]')
     local players = getPlayer(args[1], speaker)
 	for i,v in pairs(players) do
 		bangAnim = Instance.new("Animation")
