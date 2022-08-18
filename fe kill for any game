@@ -1,8 +1,8 @@
-if game:GetService("CoreGui"):FindFirstChild("KAIOD") then
-    game:GetService("CoreGui"):FindFirstChild("KAIOD"):Destroy()
+if game:GetService("CoreGui"):FindFirstChild("DREAM0_7") then
+    game:GetService("CoreGui"):FindFirstChild("DREAM0_7"):Destroy()
  _G.loopkill = false
 end
-local KAIOD = Instance.new("ScreenGui")
+local DREAM0_7 = Instance.new("ScreenGui")
 local Frame = Instance.new("ImageLabel")
 local UIGradient = Instance.new("UIGradient")
 local Kill = Instance.new("TextButton")
@@ -11,10 +11,10 @@ local Loop = Instance.new("TextButton")
 local TextLabel = Instance.new("TextLabel")
 local ImageLabel = Instance.new("ImageLabel")
 local plr = game:GetService("Players").LocalPlayer
-KAIOD.Name = "KAIOD"
-KAIOD.Parent = game:GetService("CoreGui")
+DREAM0_7.Name = "klat on top"
+DREAM0_7.Parent = game:GetService("CoreGui")
 Frame.Name = "Frame"
-Frame.Parent = KAIOD
+Frame.Parent = DREAM0_7
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Frame.BackgroundTransparency = 1.000
 Frame.Position = UDim2.new(0.0630208328, 0, 0.196662694, 0)
@@ -64,7 +64,7 @@ TextLabel.BackgroundTransparency = 1.000
 TextLabel.Position = UDim2.new(0.0759493634, 0, 0.838068187, 0)
 TextLabel.Size = UDim2.new(0, 200, 0, 50)
 TextLabel.Font = Enum.Font.SourceSans
-TextLabel.Text = "Note: Can do random\nor single"
+TextLabel.Text = "Note: Made by Dream0_7"
 TextLabel.TextColor3 = Color3.fromRGB(121, 121, 121)
 TextLabel.TextSize = 21.000
 TextLabel.TextWrapped = true
